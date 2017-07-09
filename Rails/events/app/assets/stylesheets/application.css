@@ -1,0 +1,129 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+*{
+  margin: 0px auto;
+  /*font-family: 'Open Sans Condensed';*/
+
+}
+#signUp{
+  font-family: 'Open Sans Condensed';
+  font-size: 25px;
+}
+
+.errs{
+  text-align: center;
+  color:red;
+}
+
+.ghost-button{
+  display:inline-block;
+  width:75px;
+  height: 30px;
+  padding-bottom: 3px;
+  color: #fff;
+  border: 1px solid #aaa;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  margin:10px;
+  background-color: rgba(102,102,102,.6);
+  /*border-radius: 5px;*/
+}
+.ghost-button2{
+  display:inline-block;
+  width:75px;
+  height: 30px;
+  padding-bottom: 3px;
+  color: #fff;
+  border: 1px solid #aaa;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  margin:10px;
+  background-color: rgba(172,211,229,.6);
+  /*border-radius: 5px;*/
+}
+.ghost-button2b{
+  display:inline-block;
+  width:115px;
+  height: 30px;
+  padding-bottom: 3px;
+  color: #fff;
+  border: 1px solid #aaa;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  margin:10px;
+  background-color: rgba(172,211,229,.8);
+  /*vertical-align: center;*/
+  /*border-radius: 5px;*/
+}
+.ghost-button3{
+  font-size: 10px;
+  /*display:inline-block;*/
+  width:75px;
+  height: 20px;
+  padding:5px;
+  color: #fff;
+  border: 1px solid #aaa;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  background-color: rgba(172,211,229,1);
+  border-radius: 5px;
+}
+.logOutBtn{
+  /*display:inline-block;*/
+  text-align: right;
+  margin-right: 20px;
+  /*border-radius: 5px;*/
+}
+#subhead{
+  font-family: "Fredericka the Great";
+  font-size: 30px;
+  text-align: left;
+  /*margin-bottom: 15px;*/
+  margin-top: 15px;
+}
+#subhead2{
+  font-family: "Fredericka the Great";
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.welcomeUserName{
+  font-family: "Fredericka the Great";
+  font-size: 52px;
+  /*color: rgba(172,211,299,1);*/
+  color:white;
+  text-shadow: 3px 3px 3px #000000;
+  text-align: left;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  text-align: center;
+}
+.addEvent{
+  width:75%;
+  background-color: rgba(172,211,229,.7);
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #333;
+  padding:20px;
+  margin-bottom: 20px;
+}
+.eventInfo{
+  text-align:left;
+}

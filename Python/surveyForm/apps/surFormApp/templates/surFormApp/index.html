@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Form</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'surFormApp/css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>The Dojo Survey</h2>
+      <hr>
+      <form class="" action="/surveyProcess" method="post">
+        {% csrf_token %}
+        <p>Your Name: <input type="text" name="name"></p>
+        Dojo Location: <select name="location">
+          <option value="Seattle">Seattle</option>
+          <option value="Dallas">Dallas</option>
+          <option value="Chicago">Chicago</option>
+          <option value="Washington D.C.">Washington D.C.</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="New York">New York</option>
+          </select>
+          <br>
+          Favortie Language: <select name="language">
+            <option value="Javascript">Javascript</option>
+            <option value="Python">Python</option>
+            <option value="Django">Django</option>
+            <option value="Swift">Swift</option>
+            <option value="Ruby">Ruby</option>
+            <option value="German">German</option>
+            <option value="French">French</option>
+        </select>
+        <br>
+        Comments: <textarea style="resize:none;"name="comments" rows="4" cols="40"></textarea>
+        <input type="submit" name="" value="Submit">
+
+      </form>
+
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShoeSales</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color:#dddddd;">
+  <div style="margin:0px auto; padding:20px;font-family:sans-serif; width:500px;border:1px solid #666666;background-color:#eeeeee;">
+    <style>
+      tr:nth-child(even){background-color:#f2f2f2}
+    </style>
+  <% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p style="font-size:12px; color:red;font-weight:bold;"> <%= error %> </p>
+  <% end %>
+  <% end %>
+  <div class=""style="margin-left:450px;">
+
+  <% if current_user %>
+  <form action="/users/<%=current_user.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Logout" name="Logout">
+
+  </form>
+  <% end %>
+  </div>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+for the events is the users state
+
+<% if @events.state == @users.state%>
+    <% @events.each do |event| %>
+      <td> <%= event.name %></td>
+      <td> <%= event.date %></td>
+      <td> <%= event.location %></td>
+      <td> <%= event.state %></td>
+      <td> <%= event.name %></td>
+  <% end %>
+<% end %>
+
+
+for the events not in the users state
+<% if @events.state != @users.state%>
+    <% @events.each do |event| %>
+      <td> <%= event.name %></td>
+      <td> <%= event.date %></td>
+      <td> <%= event.location %></td>
+      <td> <%= event.state %></td>
+      <td> <%= event.name %></td>
+  <% end %>
+<% end %>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <link href="https://fonts.googleapis.com/css?family=Bellefair|Fredericka+the+Great|Open+Sans+Condensed:300|Six+Caps|Special+Elite" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="logOutBtn">
+            <% if current_user %>
+            <form action="/users/<%=current_user.id%>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="delete">
+                <input class="ghost-button2" type="submit" value="Logout" name="Logout">
+
+            </form>
+            <% end %></p>
+    </div>
+    <div class="full">
+        <br>
+        <p id="title">
+            <span class="eventsTitle">Events</span>
+        </p>
+        <hr style="width:400px;">
+        <!-- <img src="assets/bridge3.jpeg" class="img-responsive" alt=""> -->
+
+        <div class="errs">
+
+          <% if flash[:errors] %>
+          <% flash[:errors].each do |error| %>
+            <p style="font-size:16px; color:red;font-weight:bold;text-align:left;"> <%= error %> </p>
+          <% end %>
+          <% end %>
+          <% if flash[:error] %>
+            <p style="font-size:16px; color:red;font-weight:bold;"> <%= flash[:error] %> </p>
+          <% end %>
+
+
+        </div>
+            <%= yield %>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<div class="userEdit">
+        <div class="row centered-form">
+        <div class="">
+        		<div class="panel-heading">
+              <p style="margin-left:350px;font-size:11px;" ><a class="ghost-button3"href="/events/">Your Dashboard</a></p>
+              <h3 id="subhead2">Edit your Profile, <%=current_user.first_name%> </h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form role="form" action="/users/<%=current_user.id %>" method="post" >
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="patch">
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+                      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+			                <input id="first_name" class="form-control input-sm" type="text" name="first_name" value="<%=current_user.first_name %>">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input id="last_name" class="form-control input-sm" type="text" name="last_name" value="<%=current_user.last_name %>">
+			    					</div>
+			    				</div>
+			    			</div>
+
+			    			<div class="form-group">
+			    				<input id="email" class="form-control input-sm" type="email" name="email" value="<%=current_user.email %>">
+			    			</div>
+                <div class="row">
+                  <div class="col-xs-10 col-sm-10 col-md-10">
+                    <div class="form-group">
+    			    				<input id="location" class="form-control input-sm" type="text" name="location" value="<%=current_user.location %>">
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div class="form-group">
+                      <select name="state" class="form-control input-sm">
+                        <option selected value="current_user.state"><%= current_user.state %></option>
+                        <option value="AK">AK</option>
+                    	  <option value="AL">AL</option>
+                    	  <option value="AR">AR</option>
+                    	  <option value="AZ">AZ</option>
+                    	  <option value="CA">CA</option>
+                    	  <option value="CO">CO</option>
+                    	  <option value="CT">CT</option>
+                    	  <option value="DC">DC</option>
+                    	  <option value="DE">DE</option>
+                    	  <option value="FL">FL</option>
+                    	  <option value="GA">GA</option>
+                    	  <option value="HI">HI</option>
+                    	  <option value="IA">IA</option>
+                    	  <option value="ID">ID</option>
+                    	  <option value="IL">IL</option>
+                    	  <option value="IN">IN</option>
+                    	  <option value="KS">KS</option>
+                    	  <option value="KY">KY</option>
+                    	  <option value="LA">LA</option>
+                    	  <option value="MA">MA</option>
+                    	  <option value="MD">MD</option>
+                    	  <option value="ME">ME</option>
+                    	  <option value="MI">MI</option>
+                    	  <option value="MN">MN</option>
+                    	  <option value="MO">MO</option>
+                    	  <option value="MS">MS</option>
+                    	  <option value="MT">MT</option>
+                    	  <option value="NC">NC</option>
+                    	  <option value="ND">ND</option>
+                    	  <option value="NE">NE</option>
+                    	  <option value="NH">NH</option>
+                    	  <option value="NJ">NJ</option>
+                    	  <option value="NM">NM</option>
+                    	  <option value="NV">NV</option>
+                    	  <option value="NY">NY</option>
+                    	  <option value="OH">OH</option>
+                    	  <option value="OK">OK</option>
+                    	  <option value="OR">OR</option>
+                    	  <option value="PA">PA</option>
+                    	  <option value="RI">RI</option>
+                    	  <option value="SC">SC</option>
+                    	  <option value="SD">SD</option>
+                    	  <option value="TN">TN</option>
+                    	  <option value="TX">TX</option>
+                    	  <option value="UT">UT</option>
+                    	  <option value="VA">VA</option>
+                    	  <option value="VT">VT</option>
+                    	  <option value="WA">WA</option>
+                    	  <option value="WI">WI</option>
+                    	  <option value="WV">WV</option>
+                    	  <option value="WY">WY</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+
+                <input class="ghost-button2b" type="submit" name="update" value="Update Profile">
+			    		</form>
+			    	</div>
+    		</div>
+    	</div>
+    </div>
+<!-- <p style="margin-left:400px;font-size:11px;" ><a class="ghost-button3"href="/events/">Your Dashboard</a></p>
+<h3 id="subhead2">Edit your Profile, <%=current_user.first_name%> </h3>
+
+<form action="/users/<%=current_user.id %>" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="hidden" name="_method" value="patch">
+  <h4>First Name:</h4>
+  <input type="text" name="first_name" value="<%=current_user.first_name %>"><br>
+  <h4>Last Name:</h4>
+  <input type="text" name="last_name" value="<%=current_user.last_name %>"><br>
+  <h4>Email:</h4>
+  <input type="text" name="email" value="<%=current_user.email %>"><br>
+  <h4>Location:</h4>
+  <p>
+  <input type="text" name="location" value="<%=current_user.location %>">
+    <select name="state">
+      <option selected value="current_user.state"><%= current_user.state %></option>
+      <option value="AK">AK</option>
+		  <option value="AL">AL</option>
+		  <option value="AR">AR</option>
+		  <option value="AZ">AZ</option>
+		  <option value="CA">CA</option>
+		  <option value="CO">CO</option>
+		  <option value="CT">CT</option>
+		  <option value="DC">DC</option>
+		  <option value="DE">DE</option>
+		  <option value="FL">FL</option>
+		  <option value="GA">GA</option>
+		  <option value="HI">HI</option>
+		  <option value="IA">IA</option>
+		  <option value="ID">ID</option>
+		  <option value="IL">IL</option>
+		  <option value="IN">IN</option>
+		  <option value="KS">KS</option>
+		  <option value="KY">KY</option>
+		  <option value="LA">LA</option>
+		  <option value="MA">MA</option>
+		  <option value="MD">MD</option>
+		  <option value="ME">ME</option>
+		  <option value="MI">MI</option>
+		  <option value="MN">MN</option>
+		  <option value="MO">MO</option>
+		  <option value="MS">MS</option>
+		  <option value="MT">MT</option>
+		  <option value="NC">NC</option>
+		  <option value="ND">ND</option>
+		  <option value="NE">NE</option>
+		  <option value="NH">NH</option>
+		  <option value="NJ">NJ</option>
+		  <option value="NM">NM</option>
+		  <option value="NV">NV</option>
+		  <option value="NY">NY</option>
+		  <option value="OH">OH</option>
+		  <option value="OK">OK</option>
+		  <option value="OR">OR</option>
+		  <option value="PA">PA</option>
+		  <option value="RI">RI</option>
+		  <option value="SC">SC</option>
+		  <option value="SD">SD</option>
+		  <option value="TN">TN</option>
+		  <option value="TX">TX</option>
+		  <option value="UT">UT</option>
+		  <option value="VA">VA</option>
+		  <option value="VT">VT</option>
+		  <option value="WA">WA</option>
+		  <option value="WI">WI</option>
+		  <option value="WV">WV</option>
+		  <option value="WY">WY</option>
+    </select>
+  </p>
+  <input class="ghost-button" type="submit" name="update" value="Update Profile">
+</form> -->

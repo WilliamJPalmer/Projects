@@ -1,0 +1,41 @@
+<div style="border:1px solid #bbbbbb; background-color:#ABD3E5;padding:25px;">
+
+<p style="text-align:right;;font-size:11px;" ><a href="/users/<%=current_user.id%>/">Your Dashboard</a></p>
+
+
+
+<p style="text-align:center;font-size:24px;font-weight:bold;margin-bottom:-10px;">Hello, <%=current_user.first_name%></p>
+<h3 style="text-align:center;">All Products</h3>
+
+
+
+<table style="border:1px solid #999999;background-color:white;width:450px;border-spacing:0px;">
+  <thead style="background-color:#5A8DB2;font-size:14px;;color:#eeeeee">
+    <tr>
+      <td style="padding:8px;">Product</td>
+      <td style="padding:4px;">Seller</td>
+      <td style="padding:4px;">Date Posted</td>
+      <td style="padding:4px;padding-left:10px;text-align:center;">Amount</td>
+      <td style="padding:4px;">Action</td>
+    </tr>
+  </thead>
+  <tbody style="overflow:scroll;">
+
+
+        <%@been_sold.each do |shoe|%>
+        <tr style="font-size:12px;">
+          <td style="padding:4px;"> <%= shoe.name %></td>
+          <td style="padding:4px;"> <%=shoe.user.first_name%></td>
+          <td style="padding:4px;"> <%= shoe.created_at.strftime("%B #{shoe.created_at.day.ordinalize}, %Y") %></td>
+          <td style="text-align:right;pading:4px;"> <%= number_to_currency(shoe.price) %></td>
+          <td style="text-align:center;"><a href="/purchases/<%=shoe.id%>">Buy</a></td>
+        </tr>
+
+      <% end %>
+
+  </tbody>
+</table>
+
+
+
+</div>

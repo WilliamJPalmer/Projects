@@ -1,0 +1,121 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// body{
+//   background-image: url(/bridge.jpeg);
+//   margin:0px auto;
+//   padding:0px;
+//   border:none;
+// }
+
+body{
+  // background-image: url('bridge3.jpeg');
+  // background-image: image('bridge3.jpeg');
+  background: url('bridge3.jpeg') no-repeat center center fixed;
+  margin:0px auto;
+  padding:0px;
+  border:none;
+  width: auto;
+  max-height: 100%;
+  display: block;
+}
+// body{
+//     background-color: #525252;
+// }
+.container{
+  max-width:400px;
+}
+.containerEvents{
+  max-width:550px;
+  border-radius: 10px;
+  // background: rgba(171,211,229,1);
+  box-shadow: 3px 3px 10px #333;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(255,255,255,.7);
+  margin-bottom:20px;
+}
+.centered-form{
+	margin-top: 10px;
+  text-align: left;
+}
+.center_div{
+  margin: 0px auto;
+  width: 75%;
+}
+.centered-form .panel{
+	background: rgba(172,211,229, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 10px 10px 10px;
+}
+.panel-title{
+  text-align: center;
+  // background: rgba(172,211,229,.7);
+}
+// .panel-heading{
+//   background: rgba(172,211,229,.7);
+// }
+// .full{
+//   background-image: url('bridge3.jpeg');
+//   width:100%;
+//   height:100%;
+// }
+// .img-responsive{
+//   max-width: 100%;
+//   height: auto;
+//   display: block;
+// }
+
+*{
+  font-family: sans-serif;
+}
+#title{
+  font-family: 'Fredericka the Great';
+  color:rgba(255,255,255,1);
+  font-size: 48px;
+  text-shadow: 3px 3px 3px #000000;
+  text-align: center;
+}
+.eventsTitle{
+  font-family: 'Fredericka the Great';
+  color:rgba(255,255,255,1);
+  font-size: 88px;
+  text-shadow: 3px 3px 3px #000000;
+  text-align: center;
+}
+// #registerBox{
+//   border-radius: 10px;
+//   background-color: rgba(171,211,229,.8);
+//   box-shadow: 3px 3px 10px #333;
+//   margin-bottom: 20px;
+//   text-align: center;
+//   // border: 1px solid #777;
+//   padding:20px;
+//
+// }
+// #signUp{
+//   font-family: 'Open Sans Condensed';
+//   font-size: 25px;
+// }
+
+.login{
+  border-radius: 10px;
+  // background: rgba(171,211,229,1);
+  box-shadow: 3px 3px 10px #333;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(255,255,255,.7);
+}
+#logIn{
+  font-family: 'Open Sans Condensed';
+  font-size: 25px;
+  text-align: center;
+  margin-bottom:10px;
+}
+.userEdit{
+  width:500px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,.75);
+  padding: 10px;
+  box-shadow: 5px 5px 10px #333;
+}

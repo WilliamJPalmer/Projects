@@ -1,0 +1,90 @@
+<div style="border:1px solid #bbbbbb; background-color:#ABD3E5;padding:25px;">
+
+<p style="margin-left:375px;font-size:11px;" ><a href="/shoes/">All Products</a></p>
+
+<p>Hello, <%=current_user.first_name%></p>
+
+<h3>Sell Some Shoes</h3>
+<form class="" action="/shoes/" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="text" name="name" placeholder="Name of the shoes"><br>
+  <input type="decimal" name="price" placeholder="$0.00"><br>
+
+  <input type="submit" name="sell" value="Sell 'Em'">
+</form>
+
+<h4 style="margin-bottom:3px;">Products that are not sold:</h4>
+<table style="border:1px solid #999999;background-color:white;border-spacing:0px;width:450px;">
+  <thead style="background-color:#5A8DB2;font-size:14px;color:#eeeeee;">
+    <tr>
+      <td style="padding:4px;">Product</td>
+      <td style="padding:4px;">Date Posted</td>
+      <td style="padding:4px;">Amount</td>
+      <td style="padding:4px;">Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @unsold.each do |shoe| %>
+    <tr style="font-size:12px;">
+      <td style="padding:4px;"> <%= shoe.name %></td>
+      <td style="padding:4px;"> <%= shoe.created_at.strftime("%B #{shoe.created_at.day.ordinalize}, %Y") %></td>
+      <td style="padding:4px;text-align:right;"> <%= number_to_currency(shoe.price) %></td>
+      <td style="padding:4px;text-align:right;"><a href="/shoes/<%=shoe.id%>/delete">Remove</a></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h4 style="margin-bottom:3px;">Shoes I've Sold:</h4>
+<table style="border:1px solid #999999;background-color:white;border-spacing:0px;width:450px;">
+  <thead style="border:collapse;padding:0px;">
+    <tr style="background-color:#5A8DB2;font-size:14px;color:#eeeeee;">
+      <td style="padding:4px;">Product</td>
+      <td style="padding:4px;">Date Sold</td>
+      <td style="padding:4px;">Buyer</td>
+      <td style="padding:4px;">Amount</td>
+    </tr>
+  </thead>
+  <tbody style="padding:50px;height:50px;overflow:scroll;background-color:white;">
+    <% @sold_items.each do |sold| %>
+
+    <% if sold.product.user == current_user %>
+    <% @total2+= sold.product.price %>
+    <tr style="font-size:12px;">
+      <td style="padding:4px;"> <%= sold.product.name %></td>
+      <td style="padding:4px;"> <%= sold.created_at.strftime("%B #{sold.created_at.day.ordinalize}, %Y") %></td>
+      <td style="padding:4px;"> <%= sold.user.first_name %></td>
+      <td style="padding:4px;text-align:right;"> <%= number_to_currency(sold.product.price) %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<p style="font-size:12px;font-weight:bold;text-align:right;;">Total: <span style="color:green;"> <%= number_to_currency(@total2) %></span></p>
+
+<h4 style="margin-bottom:3px;">Shoes I've Purchased:</h4>
+<table style="border:1px solid #999999;background-color:white;border-spacing:0px;width:450px;">
+  <thead>
+    <tr style="background-color:#5A8DB2;cell-padding:0;font-size:14px;color:#eeeeee;">
+      <td style="padding:4px;">Product</td>
+      <td style="padding:4px;">Date Bought</td>
+      <td style="padding:4px;">Seller</td>
+      <td style="padding:4px;">Amount</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bought.each do |shoe| %>
+    <% @total+= shoe.product.price %>
+    <tr style="font-size:12px;">
+      <td style="padding:4px;"> <%= shoe.product.name %></td>
+      <td style="padding:4px;"> <%= shoe.created_at.strftime("%B #{shoe.created_at.day.ordinalize}, %Y") %></td>
+      <td style="padding:4px;"> <%= shoe.product.user.first_name %></td>
+      <td style="padding:4px;text-align:right;"> <%= number_to_currency(shoe.product.price) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<p style="font-size:12px;font-weight:bold;text-align:right;;">Total: <span style="color:red;"> <%= number_to_currency(@total) %></span></p>
+
+
+</div>

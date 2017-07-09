@@ -1,0 +1,207 @@
+
+<!-- <h1>Events </h1> -->
+<p class="welcomeUserName">Welcome, <%=current_user.first_name%></p>
+<p>
+
+</p>
+
+<div class="containerEvents">
+  <div class="row">
+      <div class="col-xs-8 col-sm-8 col-md-8">
+          <div class="form-group">
+            <h3 id="subhead">Events in your state: </h3>
+          </div>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4">
+          <div class="form-group">
+            <a class="ghost-button3" href="/users/<%=current_user.id%>/edit">Edit My Profile</a>
+          </div>
+      </div>
+  </div>
+
+    <!-- <h3 id="subhead">Events in your state: <a class="ghost-button3"href="/users/<%=current_user.id%>/edit">Edit My Profile</a></h3> -->
+    <table class="table table-hover">
+        <thead>
+            <tr class="tblHeader">
+                <td>Name</td>
+                <td>Date</td>
+                <td>Location</td>
+                <td>Host</td>
+                <td>Action/Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @state_events %>
+            <% @state_events.each do |event| %>
+            <tr class="table-striped table-hover" style="font-size:12px;text-align:left;">
+                <td>
+                    <a href="/events/<%=event.id%>"><%= event.name %></a>
+                </td>
+                <td>
+                    <%= event.date.strftime("%B #{event.created_at.day.ordinalize}, %Y") %></td>
+                <td>
+                    <%= event.location %></td>
+                <td>
+                    <%= event.user.first_name %></td>
+                <td>
+                    <% if event.user.id != current_user.id %>
+
+                    <% if event.users_attending.exists?(@users.id)%>
+                    Joining
+                    <a href="/events/<%=event.id%>/cancel">Cancel</a>
+                <% else %>
+                    <a href="/events/<%=event.id%>/join">Join</a>
+                    <% end %>
+
+                <% else %>
+                    <a href="/events/<%=event.id%>/edit">Edit</a>
+                    |
+                    <a href="/events/<%=event.id%>/destroy">Delete</a>
+                    <% end %>
+                </td>
+
+            </tr>
+            <% end %>
+            <% end %>
+        </tbody>
+    </table>
+    <hr>
+    <h3 id="subhead">Events in other states:</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr class="tblHeader">
+                <td>Name</td>
+                <td>Date</td>
+                <td>Location</td>
+                <td>State</td>
+                <td>Host</td>
+                <td>Action/Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @outtastate %>
+            <% @outtastate.reverse.each do |event| %>
+            <tr style="font-size:12px;text-align:left;">
+                <td>
+                    <a href="/events/<%=event.id%>"><%= event.name %></a>
+                </td>
+                <td>
+                    <%= event.date.strftime("%B #{event.created_at.day.ordinalize}, %Y") %></td>
+                <td>
+                    <%= event.location %></td>
+                <td>
+                    <%= event.state %></td>
+                <td>
+                    <%= event.user.first_name %></td>
+                <td>
+                    <% if event.user.id != current_user.id %>
+
+                    <% if event.users_attending.exists?(@users.id)%>
+                    Joining
+                    <a href="/events/<%=event.id%>/cancel">Cancel</a>
+                <% else %>
+                    <a href="/events/<%=event.id%>/join">Join</a>
+                    <% end %>
+
+                <% else %>
+                    <a href="/events/<%=event.id%>/edit">Edit</a>
+                    |
+                    <a href="/events/<%=event.id%>/destroy">Delete</a>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="addEvent">
+
+        <h3 id="subhead2">Add a New Event</h3>
+          <form role="form" action="/events" method="post">
+              <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                          <input d="first_name" class="form-control input-sm" type="text" name="name" required placeholder="Event Name">
+                      </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                          <input d="first_name" class="form-control input-sm" type="date" name="date" required placeholder="Event Date">
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                  <div class="form-group">
+  			    				<input id="location" class="form-control input-sm" type="text" name="location" required placeholder="Location">
+                  </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="form-group">
+                    <select name="state" class="form-control input-sm">
+                      <option selected value="State"</option>
+                      <option value="AK">AK</option>
+                  	  <option value="AL">AL</option>
+                  	  <option value="AR">AR</option>
+                  	  <option value="AZ">AZ</option>
+                  	  <option value="CA">CA</option>
+                  	  <option value="CO">CO</option>
+                  	  <option value="CT">CT</option>
+                  	  <option value="DC">DC</option>
+                  	  <option value="DE">DE</option>
+                  	  <option value="FL">FL</option>
+                  	  <option value="GA">GA</option>
+                  	  <option value="HI">HI</option>
+                  	  <option value="IA">IA</option>
+                  	  <option value="ID">ID</option>
+                  	  <option value="IL">IL</option>
+                  	  <option value="IN">IN</option>
+                  	  <option value="KS">KS</option>
+                  	  <option value="KY">KY</option>
+                  	  <option value="LA">LA</option>
+                  	  <option value="MA">MA</option>
+                  	  <option value="MD">MD</option>
+                  	  <option value="ME">ME</option>
+                  	  <option value="MI">MI</option>
+                  	  <option value="MN">MN</option>
+                  	  <option value="MO">MO</option>
+                  	  <option value="MS">MS</option>
+                  	  <option value="MT">MT</option>
+                  	  <option value="NC">NC</option>
+                  	  <option value="ND">ND</option>
+                  	  <option value="NE">NE</option>
+                  	  <option value="NH">NH</option>
+                  	  <option value="NJ">NJ</option>
+                  	  <option value="NM">NM</option>
+                  	  <option value="NV">NV</option>
+                  	  <option value="NY">NY</option>
+                  	  <option value="OH">OH</option>
+                  	  <option value="OK">OK</option>
+                  	  <option value="OR">OR</option>
+                  	  <option value="PA">PA</option>
+                  	  <option value="RI">RI</option>
+                  	  <option value="SC">SC</option>
+                  	  <option value="SD">SD</option>
+                  	  <option value="TN">TN</option>
+                  	  <option value="TX">TX</option>
+                  	  <option value="UT">UT</option>
+                  	  <option value="VA">VA</option>
+                  	  <option value="VT">VT</option>
+                  	  <option value="WA">WA</option>
+                  	  <option value="WI">WI</option>
+                  	  <option value="WV">WV</option>
+                  	  <option value="WY">WY</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+              <input class="btn btn-info btn-block" type="submit" name="addevent" value="Add Event">
+              <!-- <input type="submit" value="Register" class="btn btn-info btn-block"> -->
+
+          </form>
+    </div>
+</div>

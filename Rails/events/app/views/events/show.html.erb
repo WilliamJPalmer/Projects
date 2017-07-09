@@ -1,0 +1,41 @@
+<div class="eventDetail">
+
+    <a class="ghost-button3" href="/events/">Back to Dashboard</a>
+
+    <h3 id="subhead2"><%=@events.name%></h3>
+    <div class="eventInfo">
+      <h4 class="eventTag">Host:
+          <%=@events.user.first_name%>
+          <%=@events.user.last_name%></h4>
+      <h4 class="eventTag">Date:
+          <%=@events.date.strftime("%B #{@events.created_at.day.ordinalize}, %Y")%></h4>
+      <h4 class="eventTag">Location:
+          <%=@events.location%>,
+          <%=@events.state%></h4>
+      <h4 class="eventTag">People joinging the event:
+          <%=@attending.count%></h4>
+    </div>
+
+    <div class="attending">
+
+        <table class="table table-hover">
+            <thead class="tblHeader">
+                <td>Name</td>
+                <td>location</td>
+                <td>State</td>
+            </thead>
+            <tbody>
+                <% @attending.each do |attend| %>
+                <tr>
+                    <td>
+                        <%=attend.user.first_name %></td>
+                    <td>
+                        <%=attend.user.location %></td>
+                    <td>
+                        <%=attend.user.state %></td>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
