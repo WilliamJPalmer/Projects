@@ -25,7 +25,7 @@ class SongsController < ApplicationController
 
   def create
     @user = User.find(session[:user_id])
-    @songs = Song.create(title: params[:title], artist: params[:artist], count:+1)
+    @songs = Song.create(title: params[:title], artist: params[:artist], count:0)
 
     if @songs.valid?
     redirect_to :back

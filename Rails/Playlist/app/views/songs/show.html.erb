@@ -1,8 +1,8 @@
 <div class="songholder">
 <a style="text-align:right;font-size:11px;" href="/songs/">Dashboard</a>
-<% @song.each do |song| %>
-  <p>Others who added <%=song.artist%> - <%=song.title%></p>
-  <% end %>
+
+  <p>Others who added <%=@song.artist%> - <%=@song.title%></p>
+
 
 <div style="overflow-y:auto;box-shadow: 3px 3px 10px #666666;">
 <table style="border:1px solid #999999;background-color:white;width:450px;border-spacing:0px;">
